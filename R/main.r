@@ -45,17 +45,17 @@ city_chm <- chmloader::download_chm(
     filename = "oslo-chm.tif"
 )
 
+city_chm_new <- terra::ifel(
+    city_chm == 0,
+    NA,
+    city_chm
+)
+
 terra::plot(
     city_chm_new,
     col = hcl.colors(
         64, "viridis"
     )
-)
-
-city_chm_new <- terra::ifel(
-    city_chm == 0,
-    NA,
-    city_chm
 )
 
 # 4. STREET TILES
